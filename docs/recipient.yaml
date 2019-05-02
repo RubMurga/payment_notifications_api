@@ -1,35 +1,7 @@
-definitions:
-  Error:
-    required: 
-      - error
-      - message
-    properties: 
-      error:
-        type: string
-      message:
-        type: string
-  User:
-    required: 
-      - name
-      - message
-    properties:
-      name: 
-        type: string
-      notificationCount: 
-        type: object
-        properties:
-          email:
-            type: integer
-          sms: 
-            type: integer
-          push: 
-            type: integer
-          pubsub: 
-            type: integer
 paths:
   /api/recipient/{user}:
     post: 
-      summary: Creates a new user.
+      summary: Creates a new recipient.
       consumes:
         - application/json
       parameters:
@@ -60,12 +32,12 @@ paths:
                 type: string
       responses:
         201:
-          description: User created.
+          description: Recipient created.
           schema:
             type: object
             $ref: '#/definitions/User'
         '400 (Error creating user)':       
-          description: Error creating user.
+          description: Error creating recipient.
           schema: 
             type: object
             $ref: '#/definitions/Error'

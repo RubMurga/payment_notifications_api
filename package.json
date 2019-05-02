@@ -1,5 +1,5 @@
 {
-  "name": "biis-notifications",
+  "name": "notifications",
   "version": "0.0.1",
   "description": "REST based notifications microservice",
   "main": "server.js",

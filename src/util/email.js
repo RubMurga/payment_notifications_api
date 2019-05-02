@@ -20,7 +20,7 @@ module.exports = {
     if (this.validateEmails(recipients) === false) throw new Error('Invalid emails')
     else if (!message) throw new Error('Message required')
     let email = {
-      from: '"Biis Notificaciones" <notificaciones@biis.mx>',
+      from: '"Ruben Murga" <notificaciones@rubenmurga.mx>',
       bcc: recipients,
       subject: subject || 'Notificación',
       text: message

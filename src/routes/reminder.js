@@ -1,14 +1,31 @@
 const express = require('express')
 const router = express.Router()
-const Notification = require('./../models/notification')
-const User = require('./../models/user')
-const {wrap} = require('./../util/wrap')
-const email = require('./../util/email')
+const Reminder = require('../models/reminder')
+const User = require('../models/user')
+const {wrap} = require('../util/wrap')
+const email = require('../util/email')
 const transport = email.getTransport()
-const UserUtil = require('./../util/user')
+const UserUtil = require('../util/user')
 
-router.route('/notifications/email')
+router.route('/reminders')
   .post(wrap(async (req, res) => {
+    let user = await User.findOne({_id: req.body.user})
+    let reminder = new Reminder()
+    let today = new Date()
+    reminder.recipients = req.body.recipients
+    reminder.message = req.body.message
+    reminder.title = req.body.title
+    reminder.user = user._id
+    reminder.remember_each = req.body.remember_each
+    reminder.reminder_date = req.body.reminder_date
+    reminder.creation_date = today.getFullYear() + "/" + (today.getMonth() + 1) + "/" + today.getDay()
+    await reminder.save()
+    res.status(200).json({message: 'Reminder created', reminder: reminder})
+  }))
+
+
+/* 
+
     let {recipients, message, title, userId} = req.body
     let user = await User.findOne({_id: userId})
     UserUtil.isUserNull(user)
@@ -27,6 +44,5 @@ router.route('/notifications/email')
       .then((note) => {
         res.status(201).json({message: 'Email notification sent', notification: note[1]})
       })
-  }))
-
+*/
 module.exports = router

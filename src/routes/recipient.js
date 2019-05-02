@@ -23,6 +23,8 @@ router.route('/recipient/:user')
     recipient.email = req.body.email
     recipient.phone_number = req.body.phone_number
     recipient.user = req.params.user
+    await recipient.save()
+    res.status(200).json({message: 'Recipient created', user: recipient})
   }))
 
 module.exports = router

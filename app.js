@@ -10,8 +10,7 @@ const swaggerConfig = require('./src/util/swaggerconfig')
 const users = require('./src/routes/users')
 const userId = require('./src/routes/user-id')
 const recipients = require('./src/routes/recipient')
-const emailNtf = require('./src/routes/notifications-email')
-const smsNtf = require('./src/routes/notifications-sms')
+const reminders = require('./src/routes/reminder')
 const docs = require('./src/routes/docs')
 const {errorHandler} = require('./src/util/errorHandler')
 const app = express()
@@ -35,8 +34,7 @@ async function run () {
   app.use('/api', users)
   app.use('/api', userId)
   app.use('/api', recipients)
-  app.use('/api', emailNtf)
-  app.use('/api', smsNtf)
+  app.use('/api', reminders)
   app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerConfig.swaggerSpec))
   app.use('/docs.json', docs)
   app.use(errorHandler)
@@ -48,6 +46,7 @@ async function run () {
 
   app.listen(PORT)
   console.log(`Listening on port: ${PORT}`)
+  
 }
 run().catch(error => console.error(error.stack))
 

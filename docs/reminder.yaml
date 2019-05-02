@@ -1,0 +1,35 @@
+paths:
+  /api/reminders/:
+    post: 
+      summary: Creates a new reminder.
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: Reminder
+          description: Reminder to create.
+          schema:
+            type: object
+            required:
+              - name
+            properties:
+              recipients: 
+                type: array
+                items: 
+                  type: string
+              message: 
+                type: string
+              title: 
+                type: string
+              user: 
+                type: string
+              remember_each: 
+                type: integer
+              reminder_date: 
+                type: string
+      responses:
+        201:
+          description: Reminder created.
+          schema:
+            type: object
+            $ref: '#/definitions/User'
