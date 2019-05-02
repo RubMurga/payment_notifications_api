@@ -1,0 +1,87 @@
+definitions:
+  Error:
+    required: 
+      - error
+      - message
+    properties: 
+      error:
+        type: string
+      message:
+        type: string
+  User:
+    required: 
+      - name
+      - message
+    properties:
+      name: 
+        type: string
+      notificationCount: 
+        type: object
+        properties:
+          email:
+            type: integer
+          sms: 
+            type: integer
+          push: 
+            type: integer
+          pubsub: 
+            type: integer
+paths:
+  /api/user/{id}:
+    get:
+      summary: Returns specific user's information
+      description: Returns specific user's information
+      parameters: 
+        - in: path
+          name: id
+          description: User's id
+          required: true
+          type: string
+          minimum: 2
+      responses: 
+        200: 
+          schema:
+            type: object
+            $ref: '#/definitions/User' 
+        400:
+          description: Error finding user
+          schema: 
+            type: object
+            $ref: '#/definitions/Error'
+    put: 
+      summary: Updates user information.
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: id
+          description: User's id
+          required: true
+          type: string
+          minimum: 2
+        - in: body
+          name: Notification
+          description: User to update.
+          schema:
+            type: object
+            required:
+              - name
+            properties:
+              name: 
+                type: string
+      responses:
+        201:
+          description: User updated.
+          schema:
+            type: object
+            $ref: '#/definitions/User'
+        '400 (NULL Name)':       
+          description: Name cannot be null.
+          schema: 
+            type: object
+            $ref: '#/definitions/Error'
+        '400 (Error updating user)': 
+          description: Error updating user.
+          schema: 
+            type: object
+            $ref: '#/definitions/Error'

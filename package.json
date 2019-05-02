@@ -1,0 +1,63 @@
+{
+  "name": "biis-notifications",
+  "version": "0.0.1",
+  "description": "REST based notifications microservice",
+  "main": "server.js",
+  "scripts": {
+    "std-check": "standard",
+    "std-fix": "standard --fix",
+    "start": "node app.js",
+    "test": "SET NODE_ENV=test & nyc --reporter=lcov --reporter=text mocha --exit --timeout 10000",
+    "test-w": "nodemon -x 'npm test'",
+    "watch": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.netlogistik.com:ustolar/us-notifications.git"
+  },
+  "author": "Uri Stolar <uri.stolar@biis.mx>",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.18.2",
+    "compression": "^1.7.1",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.2",
+    "googleapis": "^27.0.0",
+    "mongoose": "^5.0.3",
+    "morgan": "^1.9.0",
+    "nodemailer": "^4.6.3",
+    "nodemon": "^1.17.2",
+    "request": "^2.85.0",
+    "request-promise": "^4.2.2",
+    "swagger-jsdoc": "^1.9.7",
+    "swagger-ui-express": "^3.0.6",
+    "twilio": "^3.13.1"
+  },
+  "devDependencies": {
+    "chai": "*",
+    "chai-as-promised": "^7.1.1",
+    "dirty-chai": "^2.0.1",
+    "mocha": "*",
+    "nyc": "^11.7.1",
+    "sinon": "^4.4.2",
+    "sinon-chai": "^3.0.0",
+    "standard": "^11.0.0",
+    "supertest": "^3.0.0"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "context",
+      "before",
+      "beforeEach",
+      "after",
+      "afterEach",
+      "it",
+      "expect",
+      "importScripts",
+      "firebase",
+      "self"
+    ]
+  }
+}
