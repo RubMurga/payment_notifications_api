@@ -12,10 +12,9 @@
     "watch": "nodemon app.js"
   },
   "repository": {
-    "type": "git",
-    "url": "git@git.netlogistik.com:ustolar/us-notifications.git"
+    "type": "git"
   },
-  "author": "Uri Stolar <uri.stolar@biis.mx>",
+  "author": "Ruben Murga",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^3.0.6",
@@ -24,15 +23,15 @@
     "dotenv": "^5.0.1",
     "express": "^4.16.2",
     "googleapis": "^27.0.0",
-    "mongoose": "^5.0.3",
-    "morgan": "^1.9.0",
+    "mongoose": "^5.5.5",
+    "morgan": "^1.9.1",
     "nodemailer": "^4.6.3",
-    "nodemon": "^1.17.2",
-    "request": "^2.85.0",
+    "nodemon": "^1.19.0",
+    "request": "^2.88.0",
     "request-promise": "^4.2.2",
     "swagger-jsdoc": "^1.9.7",
     "swagger-ui-express": "^3.0.6",
-    "twilio": "^3.13.1"
+    "twilio": "^3.30.3"
   },
   "devDependencies": {
     "chai": "*",

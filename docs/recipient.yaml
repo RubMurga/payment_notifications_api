@@ -1,0 +1,71 @@
+definitions:
+  Error:
+    required: 
+      - error
+      - message
+    properties: 
+      error:
+        type: string
+      message:
+        type: string
+  User:
+    required: 
+      - name
+      - message
+    properties:
+      name: 
+        type: string
+      notificationCount: 
+        type: object
+        properties:
+          email:
+            type: integer
+          sms: 
+            type: integer
+          push: 
+            type: integer
+          pubsub: 
+            type: integer
+paths:
+  /api/recipient/{user}:
+    post: 
+      summary: Creates a new user.
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: user
+          description: User's id
+          required: true
+          type: string
+          minimum: 2
+
+        - in: body
+          name: User
+          description: User to create.
+          schema:
+            type: object
+            required:
+              - name
+            properties:
+              name: 
+                type: string
+              email_notification: 
+                type: boolean
+              sms_notification: 
+                type: boolean
+              email: 
+                type: string
+              phone_number: 
+                type: string
+      responses:
+        201:
+          description: User created.
+          schema:
+            type: object
+            $ref: '#/definitions/User'
+        '400 (Error creating user)':       
+          description: Error creating user.
+          schema: 
+            type: object
+            $ref: '#/definitions/Error'
