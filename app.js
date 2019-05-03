@@ -14,7 +14,8 @@ const reminders = require('./src/routes/reminder')
 const docs = require('./src/routes/docs')
 const {errorHandler} = require('./src/util/errorHandler')
 const app = express()
-const DBOPTIONS = { keepAlive: 1, connectTimeoutMS: 30000 }
+const DBOPTIONS = { keepAlive: 1, connectTimeoutMS: 30000, useNewUrlParser: true }
+mongoose.set('useCreateIndex', true);
 const PORT = process.env.PORT || 3000
 
 async function run () {
