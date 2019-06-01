@@ -1,5 +1,6 @@
 const swaggerJSDoc = require('swagger-jsdoc')
-const base = process.env.PWD
+//const base = process.env.PWD
+const base = process.cwd()
 var swaggerConfig = {}
 //  Swagger config
 swaggerConfig.swaggerDefinition = {

@@ -9,6 +9,10 @@ router.route('/users')
     newUser.name = req.body.name
     newUser.username = req.body.username
     newUser.password = req.body.password
+    newUser.email_notification = req.body.email_notification
+    newUser.sms_notification = req.body.sms_notification
+    newUser.email = req.body.email
+    newUser.phone_number = req.body.phone_number
     await newUser.save()
     res.status(201).json({message: 'User created', user: newUser})
   }))

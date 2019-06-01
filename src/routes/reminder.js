@@ -12,7 +12,9 @@ router.route('/reminders')
     let user = await User.findOne({_id: req.body.user})
     let reminder = new Reminder()
     let today = new Date()
-    reminder.recipients = req.body.recipients
+    reminder.self_reminder = req.body.self_reminder
+    if (req.body.self_reminder) reminder.recipients = [user._id]
+    else reminder.recipients = req.body.recipients 
     reminder.message = req.body.message
     reminder.title = req.body.title
     reminder.user = user._id

@@ -27,6 +27,8 @@ paths:
                 type: integer
               reminder_date: 
                 type: string
+              self_reminder:
+                type: boolean
       responses:
         201:
           description: Reminder created.

@@ -7,6 +7,10 @@ const userSchema = new Schema({
   name: {type: String, trim: true, required: true, min: 2},
   username: { type: String, required: true, index: { unique: true } },
   password: { type: String, required: true },
+  email: {type: String, required: true},
+  email_notification: {type: Boolean, required: true, default: false},
+  sms_notification: {type: Boolean, required: true, default: false},
+  phone_number: {type: String, required: false}, 
   notificationCount: {
     email: {type: Number, default: 0},
     sms: {type: Number, default: 0}
